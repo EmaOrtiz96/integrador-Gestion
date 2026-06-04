@@ -2,7 +2,7 @@
 
 > Sistema fullstack de gestión de inventario construido con **FastAPI + React + MySQL**, desarrollado con asistencia de IA como parte del TP Integrador de Programación IV.
 
-![CI/CD](https://github.com/TU_USUARIO/stockwise/actions/workflows/ci.yml/badge.svg)
+![CI/CD](https://github.com/EmaOrtiz96/integrador-Gestion/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
@@ -57,8 +57,8 @@ StockWise es una aplicación web para **control de inventario en tiempo real**. 
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/stockwise.git
-cd stockwise
+git clone https://github.com/EmaOrtiz96/integrador-Gestion.git
+cd integrador-Gestion
 ```
 
 ### 2. Backend (FastAPI)
@@ -184,13 +184,3 @@ stockwise/
 
 ---
 
-## 🔗 Links
-
-- 🌐 **Demo**: [stockwise.vercel.app](https://stockwise.vercel.app) *(reemplazar con URL real)*
-- 📖 **API Docs**: [stockwise-api.onrender.com/docs](https://stockwise-api.onrender.com/docs) *(reemplazar)*
-
----
-
-## 📄 Licencia
-
-MIT © 2025
