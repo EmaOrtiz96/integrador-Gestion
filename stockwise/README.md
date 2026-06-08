@@ -11,6 +11,14 @@
 
 ---
 
+## 🌐 Demo en vivo
+
+- **Frontend**: https://integrador-gestion3.vercel.app
+- **Backend API**: https://integrador-gestion-production.up.railway.app
+- **Documentación API**: https://integrador-gestion-production.up.railway.app/docs
+
+---
+
 ## ✨ ¿Qué es StockWise?
 
 StockWise es una aplicación web para **control de inventario en tiempo real**. Permite registrar productos, organizarlos por categorías, gestionar entradas/salidas/ajustes de stock, y visualizar el estado del inventario en un dashboard interactivo con gráficos.
@@ -22,7 +30,7 @@ StockWise es una aplicación web para **control de inventario en tiempo real**. 
 - 🏷️ **Gestión de categorías** para organizar el inventario
 - 🔄 **Registro de movimientos**: entradas, salidas y ajustes manuales con historial completo
 - ⚠️ **Sistema de alertas** automático para productos por debajo del stock mínimo
-- 🚀 **CI/CD** con GitHub Actions + deploy en Render (backend) y Vercel (frontend)
+- 🚀 **CI/CD** con GitHub Actions + deploy en Railway (backend) y Vercel (frontend)
 
 ---
 
@@ -34,7 +42,7 @@ StockWise es una aplicación web para **control de inventario en tiempo real**. 
 | Frontend | React 18, TypeScript 5.4, Vite 5 |
 | Estado/API | TanStack Query v5 |
 | Base de datos | MySQL 8.0 (XAMPP local / Railway en producción) |
-| Deploy | Render (API) + Vercel (Frontend) |
+| Deploy | Railway (API) + Vercel (Frontend) |
 | CI/CD | GitHub Actions |
 
 ### 🤖 IA utilizada
@@ -64,7 +72,7 @@ cd integrador-Gestion
 ### 2. Backend (FastAPI)
 
 ```bash
-cd backend
+cd stockwise/backend
 
 # Crear entorno virtual
 python -m venv venv
@@ -91,7 +99,7 @@ Documentación interactiva: `http://localhost:8000/docs`
 ### 3. Frontend (React)
 
 ```bash
-cd frontend
+cd stockwise/frontend
 
 # Instalar dependencias
 npm install
@@ -110,30 +118,30 @@ La aplicación estará disponible en: `http://localhost:5173`
 
 ## 🌐 Deploy en producción
 
-### Backend → Render
+### Backend → Railway
 
-1. Crear cuenta en [render.com](https://render.com)
-2. Nuevo "Web Service" → conectar el repositorio
-3. Configurar:
-   - **Root Directory**: `backend`
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-4. Agregar variable de entorno `DATABASE_URL` (usar Railway o PlanetScale para MySQL gratuito)
-5. Copiar el **Deploy Hook** URL y guardarlo como `RENDER_DEPLOY_HOOK` en los secrets del repo
+1. Crear cuenta en [railway.app](https://railway.app)
+2. Nuevo proyecto → "Deploy from GitHub repo"
+3. Seleccionar el repositorio
+4. Configurar:
+   - **Root Directory**: `stockwise/backend`
+   - El `Procfile` ya está incluido con el comando de inicio
+5. Agregar las variables de entorno necesarias (DATABASE_URL, etc.)
 
 ### Frontend → Vercel
 
-1. Instalar Vercel CLI: `npm i -g vercel`
-2. Desde la carpeta `frontend`: `vercel`
-3. Configurar variable de entorno `VITE_API_URL` con la URL de Render
-4. Guardar `VERCEL_TOKEN`, `VERCEL_ORG_ID` y `VERCEL_PROJECT_ID` en los secrets del repo
+1. Crear cuenta en [vercel.com](https://vercel.com)
+2. Nuevo proyecto → conectar el repositorio
+3. Configurar:
+   - **Root Directory**: `stockwise/frontend`
+4. Agregar variable de entorno `VITE_API_URL` con la URL de Railway
 
 ### CI/CD automático
 
 Con los secrets configurados, cada push a `main` dispara automáticamente:
 1. ✅ Lint y tests del backend
 2. ✅ Build del frontend
-3. 🚀 Deploy automático en Render + Vercel
+3. 🚀 Deploy automático en Railway + Vercel
 
 ---
 
@@ -159,6 +167,7 @@ stockwise/
 │   │   │   └── schemas.py      # Modelos Pydantic
 │   │   └── main.py             # App FastAPI
 │   ├── requirements.txt
+│   ├── Procfile
 │   └── .env.example
 ├── frontend/
 │   ├── src/
@@ -178,9 +187,5 @@ stockwise/
 │   │   └── index.css
 │   ├── package.json
 │   └── vercel.json
-├── render.yaml
 └── README.md
 ```
-
----
-
